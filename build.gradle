@@ -4,6 +4,10 @@ plugins {
     id 'idea'
     id 'maven-publish'
     id 'net.neoforged.gradle.userdev' version '7.0.120'
+    // Adds the Kotlin Gradle plugin
+    id 'org.jetbrains.kotlin.jvm' version '1.9.23'
+    // OPTIONAL Kotlin Serialization plugin
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.9.23'
 }
 
 version = mod_version
@@ -11,6 +15,11 @@ group = mod_group_id
 
 repositories {
     mavenLocal()
+    maven {
+        name = 'Kotlin for Forge'
+        url = 'https://thedarkcolour.github.io/KotlinForForge/'
+        content { includeGroup "thedarkcolour" }
+    }
 }
 
 base {
@@ -25,7 +34,7 @@ runs {
     configureEach {
         systemProperty 'forge.logging.markers', 'REGISTRIES'
         systemProperty 'forge.logging.console.level', 'debug'
-        programArguments("--width", "1920", "--height", "1080")
+        programArguments("--width", "854", "--height", "480")
 
         modSource project.sourceSets.main
     }
@@ -56,6 +65,7 @@ configurations {
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
+    implementation "thedarkcolour:kotlinforforge-neoforge:${kotlin_for_forge_ver}"
 }
 
 tasks.withType(ProcessResources).configureEach {
@@ -102,3 +112,4 @@ idea {
         downloadJavadoc = true
     }
 }
+

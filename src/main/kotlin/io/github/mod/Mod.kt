@@ -1,18 +1,14 @@
-package io.github.mod;
+package io.github.mod
 
-import org.slf4j.Logger;
-
-import com.mojang.logging.LogUtils;
-
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModContainer;
+import com.mojang.logging.LogUtils
+import net.neoforged.bus.api.IEventBus
+import net.neoforged.fml.ModContainer
+import org.slf4j.Logger
 
 @net.neoforged.fml.common.Mod(Mod.MODID)
-public class Mod {
-    public static final String MODID = "mod";
-    private static final Logger LOGGER = LogUtils.getLogger();
-
-    public Mod(IEventBus modEventBus, ModContainer modContainer) {
-
+class Mod(modEventBus: IEventBus?, modContainer: ModContainer?) {
+    companion object {
+        const val MODID: String = "mod"
+        private val LOGGER: Logger = LogUtils.getLogger()
     }
 }
